@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Verification</title>
+    <style>
+        /* Loading animation styles */
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #loading img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Form styles */
+        form {
+            text-align: center;
+        }
+
+        /* Display predicted texts */
+        #predictedTexts {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <img src="https://i.stack.imgur.com/FhHRx.gif" alt="Loading">
+        <p>Predicting...</p>
+    </div>
+
+    <form id="verificationForm" enctype="multipart/form-data">
+    </br></br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+    </br></br>
+        <label for="dept">Department:</label>
+        <input type="text" name="dept" required><br>
+    </br></br>
+        <label for="batch">Batch:</label>
+        <input type="text" name="batch" required><br>
+    </br></br>
+        <label for="reg_number">Register Number:</label>
+        <input type="text" name="reg_number" required><br>
+    </br></br>
+        <!-- Accept only image files -->
+        <label for="file">10th Marksheet (Image):</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required onchange="processPhoto()"><br>
+    </br></br>
+        <input type="submit" value="Submit">
+    </form>
+    </br></br>
+    <!-- Display predicted texts -->
+    <div id="predictedTexts"></div>
+
+    <script>
+        function processPhoto() {
+            // Display loading animation
+            document.getElementById('loading').style.display = 'block';
+
+            var form = document.getElementById('verificationForm');
+            var formData = new FormData(form);
+
+            // Use the fetch API to send the image file to the server
+            fetch('/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading animation
+                document.getElementById('loading').style.display = 'none';
+
+                // Display the extracted texts
+                displayPredictedTexts(data.predicted_texts);
+
+                // Optionally, you can do more with the response, such as updating the UI
+                console.log(data);
+
+                // Reset the form
+                // form.reset(); // Comment this line to prevent automatic form reset
+
+                // Optionally, you can clear specific inputs if needed
+                // document.getElementById('name').value = '';
+                // document.getElementById('dept').value = '';
+                // document.getElementById('batch').value = '';
+                // document.getElementById('reg_number').value = '';
+            })
+            .catch(error => {
+                // Hide loading animation in case of an error
+                document.getElementById('loading').style.display = 'none';
+                console.error('Error:', error);
+            });
+
+            // Prevent the default form submission
+            return false;
+        }
+
+
+        // Function to display predicted texts
+        function displayPredictedTexts(predictedTexts) {
+            var html = '<h2>Predicted Texts:</h2><ul>';
+            for (var i = 0; i < predictedTexts.length; i++) {
+                html += '<li>' + predictedTexts[i] + '</li>';
+            }
+            html += '</ul>';
+            document.getElementById('predictedTexts').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
