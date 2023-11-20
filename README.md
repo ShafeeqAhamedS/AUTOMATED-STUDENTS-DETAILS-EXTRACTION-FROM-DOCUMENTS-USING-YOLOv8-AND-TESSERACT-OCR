@@ -16,5 +16,38 @@ In the evolving digital landscape, this project pioneers a transformative leap i
 ## User Flow Diagram
 ![image](https://github.com/ShafeeqAhamedS/Automated-Document-Based-Data-Verification-System-Using-YOLOv8-and-Tesseract-OCR/assets/93427237/c04d5f00-5640-436e-8e1c-3550faf50774)
 
+
+# Training Model 
+
+## YOLOv8 Object Detection Model Training
+Welcome to the training model page of our project. In this document, we'll provide you with an overview of the YOLOv8 object detection model, explain the dataset, and guide you through the training process.
+
+## YOLOv8 Overview
+YOLOv8 (You Only Look Once version 8) is a state-of-the-art object detection algorithm. It provides real-time and accurate object detection by dividing an image into a grid and making predictions for objects within each grid cell. YOLOv8 is a versatile framework, and in this project, we've trained a custom YOLOv8 model for the specific task of detecting "Name", "Board of Education" and "STANDARD" within marksheets.
+
+## Dataset
+Our dataset consists of nearly 500+ images, with "Name", "Board of Education" and "STANDARD" annotated in YOLOv8 format. The dataset has been pre-processed and augmented to enhance the diversity and quality of the training data. Augmentation techniques include horizontal and vertical flips, rotations, random cropping, brightness adjustments, exposure adjustments, Gaussian blur, and noise.
+
+## Training Process
+
+To train our custom YOLOv8 model, we used the processed dataset and a specific model configuration. Training involved optimizing the model's parameters to accurately detect "Name", "Board of Education" and "STANDARD" within marksheets. We performed training for a specified number of epochs and evaluated the model's performance on validation data.
+
+## Model Configuration
+
+Our YOLOv8 model is configured with specific hyperparameters, architecture details, and object detection settings. The model configuration file and weights are available in this repository.
+
+## Results and Evaluation
+
+After training the model, we conducted an evaluation to assess its performance. We used various metrics to measure the accuracy, precision, recall, and F1-score of our object detection model.
+
+
+<img src="./Model_Training/P_curve.png" width="500" height="320">
+<img src="./Model_Training/R_curve.png" width="500" height="320">
+<img src="./Model_Training/PR_curve.png" width="500" height="320">
+<img src="./Model_Training/F1_curve.png" width="500" height="320">
+
+![val_batch0_pred](./Model_Training/confusion_matrix.png)
+![results](./Model_Training/results.png)
+
 ## License
 This project is licensed under the <a href="./LICENSE">MIT License</a>.
