@@ -1,5 +1,5 @@
-# AUTOMATED STUDENTS EXTRACTION FROM DOCUMENTS USING YOLOv8 AND TESSERACT OCR
-This project focuses on automating the extraction of details such as Name, Board of Education, and more from scanned documents. By leveraging Tesseract OCR, an Optical Character Recognition (OCR) tool, and implementing various computer vision techniques, we have developed an effective solution for this task.
+# AUTOMATED STUDENTS DETAILS EXTRACTION FROM DOCUMENTS USING YOLOv8 AND TESSERACT OCR
+This project focuses on automating the extraction of details such as Name, Board of Education, and more from scanned marksheet. By leveraging Tesseract OCR, an Optical Character Recognition (OCR) tool, and implementing various computer vision techniques, we have developed an effective solution for this task.
 
 ## About
 In the evolving digital landscape, this project pioneers a transformative leap in text recognition. By integrating YOLOv8 and Tesseract, it efficiently bridges the divide between printed content and digital data utilization. With a focus on streamlining academic record extraction, the project's core objective is to cultivate a robust system, seamlessly identifying and processing crucial information. By automating document verification, it minimizes human error, elevating operational efficiency and marking a significant advancement in the domain of document validation.
